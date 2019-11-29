@@ -1,0 +1,4 @@
+Base path: D:/SoftWare/Unity2019.1.0f/Editor/Data
+Cmd: initializeCompiler
+Cmd: compileComputeKernel
+  api=4 insize=7117 outsize=2465 ok=1

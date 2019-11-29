@@ -1,0 +1,271 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BD_face
+  m_Shader: {fileID: 4800000, guid: 803daaf47568662498c2c86eee9ea621, type: 3}
+  m_ShaderKeywords: _NORMALMAP _SELFSPEC_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AO:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 3a083a23c57580541baf30360e49ca9e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 8900000, guid: 0c7f5eed5cc2d2b4b948f82776c99dbc, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DecalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Di:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Diffuse:
+        m_Texture: {fileID: 2800000, guid: 5bdb1a3fd43e699468f69192c703b374, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LookupDiffuseSpec:
+        m_Texture: {fileID: 2800000, guid: 0f68d152addfe654bb69a17ed1bfa101, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4996b181763b4764db50ad78da73bbcc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaterialTex:
+        m_Texture: {fileID: 2800000, guid: 38b606dcb8489af43920fae9cd5643e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 2800000, guid: 3a083a23c57580541baf30360e49ca9e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShadowMapFocus:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 5bdb1a3fd43e699468f69192c703b374, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - SelfSpec: 1
+    - _ASEOutlineWidth: 0
+    - _BackLightWeight: 2.09
+    - _BlackLevel: 0
+    - _BleachBypassRate: 0.46
+    - _BrowLMakeupAlpha: 1
+    - _BrowLMakeupMetallic: 1
+    - _BrowLMakeupSmoothness: 1
+    - _BrowLMakeupSpecPow: 2.15
+    - _BrowLMakeupSpecular: 0
+    - _BrowRMakeupAlpha: 0
+    - _BrowRMakeupMetallic: 1
+    - _BrowRMakeupSmoothness: 0
+    - _BrowRMakeupSpecPow: 0
+    - _BrowRMakeupSpecular: 0
+    - _BumpScale: 1
+    - _BumpinessDB: 0.7
+    - _BumpinessDG: 0.6
+    - _BumpinessDR: 0.1
+    - _CheekHeight: 0
+    - _CheekPower: 0.71
+    - _CheekShape: 1
+    - _CheekSmooth: 0
+    - _CustomizeInfo: 0
+    - _CustomizeInfoDetails: 1
+    - _Cutoff: 0.5
+    - _DecalLMakeupAlpha: 0
+    - _DecalLMakeupMetallic: 1
+    - _DecalLMakeupSmoothness: 0
+    - _DecalLMakeupSpecPow: 0
+    - _DecalLMakeupSpecular: 0
+    - _DecalRMakeupAlpha: 0
+    - _DecalRMakeupMetallic: 1
+    - _DecalRMakeupSmoothness: 0
+    - _DecalRMakeupSpecPow: 0
+    - _DecalRMakeupSpecular: 0
+    - _DetailNormalMapScale: 1
+    - _DetailNormalTile: 1
+    - _DetailNormalWeight: 0
+    - _DstBlend: 0
+    - _EyeLMakeupAlpha: 0
+    - _EyeLMakeupMetallic: 1
+    - _EyeLMakeupSmoothness: 0
+    - _EyeLMakeupSpecPow: 0
+    - _EyeLMakeupSpecular: 0
+    - _EyeRMakeupAlpha: 0
+    - _EyeRMakeupMetallic: 1
+    - _EyeRMakeupSmoothness: 0.701
+    - _EyeRMakeupSpecPow: 0
+    - _EyeRMakeupSpecular: 0
+    - _EyeShadowPower: 0.05
+    - _EyeShadowShade: 1
+    - _EyeShadowShape: 0
+    - _EyeShadowSmooth: 0
+    - _EyeShadowSpec: 0.15
+    - _EyebrowHeight: 0.32
+    - _EyebrowShape: 0
+    - _EyebrowThick: 0.24
+    - _GlobalSSSWeight: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _HDR_Multiply: 0.756
+    - _LipMakeupAlpha: 0
+    - _LipMakeupMetallic: 1
+    - _LipMakeupSmoothness: 0
+    - _LipMakeupSpecPow: 0
+    - _LipMakeupSpecular: 0
+    - _MakeFace: 0
+    - _MakeFaceLOD1: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _MouthPower: 1
+    - _MouthShade: 0.42
+    - _MouthShape: 0
+    - _MouthSmooth: 0
+    - _MouthSpec: 0.35
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SSSOffset: 0.653
+    - _SSSPower: 1
+    - _SSSWeight: 1
+    - _SelfSpec: 1
+    - _SelfSpecWeight: 1
+    - _SkinF0: 0.0448
+    - _SkinSmoothness: 1
+    - _SkinSmoothnessOffset: 0
+    - _SkinSpec: 0
+    - _SmoothnessOffset: 0
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _XRayBias: 0
+    - _XRayIntensity: 0
+    - _XRayPower: 0
+    - _XRayScale: 0
+    - _ZWrite: 1
+    - __dirty: 0
+    m_Colors:
+    - _AmbientColor: {r: 0, g: 0, b: 0, a: 0.5}
+    - _BrowLMakeupColor: {r: 1, g: 0.7576597, b: 0.1745283, a: 1}
+    - _BrowLMakeupHSV: {r: 0, g: 0, b: 0, a: 0}
+    - _BrowLMakeupPos: {r: 0.55, g: 0.63, b: 0, a: 0}
+    - _BrowLMakeupScale: {r: 0.1, g: 0.1, b: 1, a: 1}
+    - _BrowLMakeupSizeAndOffset: {r: 1, g: 1, b: 1, a: 1}
+    - _BrowRMakeupColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BrowRMakeupHSV: {r: 0, g: 0, b: 0, a: 0}
+    - _BrowRMakeupPos: {r: 0, g: 0, b: 0, a: 0}
+    - _BrowRMakeupScale: {r: 0.1, g: 0.1, b: 1, a: 1}
+    - _BrowRMakeupSizeAndOffset: {r: 1, g: 1, b: 0, a: 0}
+    - _CheekColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.25882354}
+    - _CustomizeInfo: {r: 1, g: 1, b: 1, a: 1}
+    - _CustomizeInfoDetails: {r: 1, g: 1, b: 1, a: 1}
+    - _Decal0MakeupColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DecalLMakeupColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DecalLMakeupHSV: {r: 0, g: 0, b: 0, a: 0}
+    - _DecalLMakeupPos: {r: 0, g: 0, b: 0, a: 0}
+    - _DecalLMakeupScale: {r: 1, g: 1, b: 1, a: 1}
+    - _DecalLMakeupSizeAndOffset: {r: 1, g: 1, b: 0, a: 0}
+    - _DecalRMakeupColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DecalRMakeupHSV: {r: 0, g: 0, b: 0, a: 0}
+    - _DecalRMakeupPos: {r: 0, g: 0, b: 0, a: 0}
+    - _DecalRMakeupScale: {r: 1, g: 1, b: 1, a: 1}
+    - _DecalRMakeupSizeAndOffset: {r: 1, g: 1, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EyeLMakeupColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EyeLMakeupHSV: {r: 0, g: 0, b: 0, a: 0}
+    - _EyeLMakeupPos: {r: 0, g: 0, b: 0, a: 0}
+    - _EyeLMakeupScale: {r: 1, g: 1, b: 1, a: 1}
+    - _EyeLMakeupSizeAndOffset: {r: 1, g: 1, b: 0, a: 0}
+    - _EyeRMakeupColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EyeRMakeupHSV: {r: 0, g: 0, b: 0, a: 0}
+    - _EyeRMakeupPos: {r: 0, g: 0, b: 0, a: 0}
+    - _EyeRMakeupScale: {r: 1, g: 1, b: 1, a: 1}
+    - _EyeRMakeupSizeAndOffset: {r: 1, g: 1, b: 0, a: 0}
+    - _EyeShadowColor: {r: 0.23137255, g: 0, b: 0, a: 0}
+    - _EyebrowColor: {r: 1, g: 1, b: 1, a: 0}
+    - _LipMakeupColor: {r: 1, g: 1, b: 1, a: 1}
+    - _LipMakeupHSV: {r: 0, g: 0, b: 0, a: 0}
+    - _LipMakeupPos: {r: 0, g: 0, b: 0, a: 0}
+    - _LipMakeupScale: {r: 1, g: 1, b: 1, a: 1}
+    - _LipMakeupSizeAndOffset: {r: 1, g: 1, b: 0, a: 0}
+    - _MouthColor: {r: 1, g: 1, b: 1, a: 0}
+    - _ReflectColor: {r: 0.548828, g: 0.548828, b: 0.548828, a: 0.5}
+    - _SSSColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SelfSpecColor: {r: 1, g: 1, b: 1, a: 0}
+    - _SkyColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _StaticLightColor: {r: 0, g: 0, b: 0, a: 0.5}
+    - _StaticLightDir: {r: 1, g: 0, b: 0, a: 0}
+    - _XRayColor: {r: 0, g: 0, b: 0, a: 0}

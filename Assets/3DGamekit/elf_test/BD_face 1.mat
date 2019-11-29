@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: BD_face 1
+  m_Shader: {fileID: 4800000, guid: 3d93e95c8a9b0dc40ad982ee6f9713c3, type: 3}
+  m_ShaderKeywords: _SELFSPEC_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AO:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 8900000, guid: 0c7f5eed5cc2d2b4b948f82776c99dbc, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Di:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Diffuse:
+        m_Texture: {fileID: 2800000, guid: 5bdb1a3fd43e699468f69192c703b374, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: fa553847aec272b40ae1b2b7b16e3adc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaterialTex:
+        m_Texture: {fileID: 2800000, guid: 38b606dcb8489af43920fae9cd5643e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 2800000, guid: 3a083a23c57580541baf30360e49ca9e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShadowMapFocus:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 5bdb1a3fd43e699468f69192c703b374, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - SelfSpec: 1
+    - _ASEOutlineWidth: 0
+    - _BackLightWeight: 2.09
+    - _BlackLevel: 0
+    - _BleachBypassRate: 0.46
+    - _BumpScale: 1
+    - _CheekHeight: 0
+    - _CheekPower: 0.71
+    - _CheekShape: 1
+    - _CheekSmooth: 0
+    - _CustomizeInfo: 0
+    - _CustomizeInfoDetails: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DetailNormalTile: 1
+    - _DetailNormalWeight: 0.38
+    - _DstBlend: 0
+    - _EyeShadowPower: 0.05
+    - _EyeShadowShade: 1
+    - _EyeShadowShape: 0
+    - _EyeShadowSmooth: 0
+    - _EyeShadowSpec: 0.15
+    - _EyebrowHeight: 0.32
+    - _EyebrowShape: 0
+    - _EyebrowThick: 0.24
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _HDR_Multiply: 0.937
+    - _Metallic: 0
+    - _Mode: 0
+    - _MouthPower: 1
+    - _MouthShade: 0.42
+    - _MouthShape: 0
+    - _MouthSmooth: 0
+    - _MouthSpec: 0.35
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SSSWeight: 1
+    - _SelfSpec: 1
+    - _SelfSpecWeight: 0
+    - _SkinSpec: 0.1
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _XRayBias: 0
+    - _XRayIntensity: 0
+    - _XRayPower: 0
+    - _XRayScale: 0
+    - _ZWrite: 1
+    - __dirty: 0
+    m_Colors:
+    - _AmbientColor: {r: 0.8679245, g: 0.4462442, b: 0.4462442, a: 0.5}
+    - _CheekColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 0.5283019, g: 0.45603418, b: 0.45603418, a: 1}
+    - _CustomizeInfo: {r: 1, g: 1, b: 1, a: 1}
+    - _CustomizeInfoDetails: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EyeShadowColor: {r: 0.23137255, g: 0, b: 0, a: 0}
+    - _EyebrowColor: {r: 1, g: 1, b: 1, a: 0}
+    - _MouthColor: {r: 1, g: 1, b: 1, a: 0}
+    - _ReflectColor: {r: 0.548828, g: 0.548828, b: 0.548828, a: 0.5}
+    - _SelfSpecColor: {r: 1, g: 1, b: 1, a: 0}
+    - _SkyColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    - _StaticLightColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 0.5}
+    - _StaticLightDir: {r: 1, g: 0, b: 0, a: 0}
+    - _XRayColor: {r: 0, g: 0, b: 0, a: 0}

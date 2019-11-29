@@ -1,0 +1,26 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+struct PBuffer
+{
+	float life;
+	float3 pos;
+	float3 scale;
+	float3 eulerAngle;
+};
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWStructuredBuffer<PBuffer> buffer;
+float deltaTime;
+
+[numthreads(2,2,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    // TODO: insert actual code here!
+	int index = id.x + id.y * 2 * 2;
+	buffer[index].life -= deltaTime;
+	buffer[index].pos = buffer[index].pos + float3(0, deltaTime,0);
+	buffer[index].scale = buffer[index].scale;
+	buffer[index].eulerAngle = buffer[index].eulerAngle + float3(0,20* deltaTime,0);
+    
+}
