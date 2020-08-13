@@ -18,14 +18,15 @@ public class MaterialTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            material = render.material;
+            material = render.sharedMaterial;
             string name = material.name;
+            Debug.Log(name);
             //string name = render.sharedMaterial.name;
             //Texture tex = render.sharedMaterial.mainTexture;
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Debug.Log(render.material.name);
+            Debug.Log(render.sharedMaterial.name);
             mat = render.material;
             //Object.Destroy(render.sharedMaterial);
             //render.sharedMaterial = null;

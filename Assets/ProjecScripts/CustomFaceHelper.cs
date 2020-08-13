@@ -186,6 +186,10 @@ public class CustomFaceHelper : MonoBehaviour
         axis += Vector3.one;
         bone.localScale = axis;
     }
+    public void SetMaterialFloat(int matIndex,string property,float x,bool update=true)
+    {
+
+    }
     private void UpdateRender(MaterialPropertyBlock block)
     {
 

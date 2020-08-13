@@ -496,7 +496,7 @@ struct Unity_GlossyEnvironmentData
 
 // ----------------------------------------------------------------------------
 
-Unity_GlossyEnvironmentData UnityGlossyEnvironmentSetup(half Smoothness, half3 worldViewDir, half3 Normal, half3 fresnel0)
+Unity_GlossyEnvironmentDataUnityGlossyEnvironmentSetup(half Smoothness, half3 worldViewDir, half3 Normal, half3 fresnel0)
 {
     Unity_GlossyEnvironmentData g;
 
