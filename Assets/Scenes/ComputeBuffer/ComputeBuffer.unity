@@ -252,6 +252,8 @@ GameObject:
   - component: {fileID: 2001198422}
   - component: {fileID: 2001198421}
   - component: {fileID: 2001198420}
+  - component: {fileID: 2001198423}
+  - component: {fileID: 2001198424}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -299,7 +301,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -324,3 +326,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2001198423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001198419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a096fb69c93183c4587d10b338a3f379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topDownView: {fileID: 8400000, guid: db98a6a0a913107449e26729e7a2ea29, type: 2}
+  m_IndirectRenderer: {fileID: 2001198424}
+  mainCamera: {fileID: 2001198421}
+  light: {fileID: 1983964224}
+  generateBufferShader: {fileID: 4800000, guid: 003b0792ada85f540a614a00f5a4679d,
+    type: 3}
+  debugShader: {fileID: 4800000, guid: ef5c18c7ec5847645b42655898d20fc8, type: 3}
+--- !u!114 &2001198424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001198419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef27d7819a876e4da32722c09c50a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runCompute: 1
+  drawInstance: 1
+  enableInstanceShadows: 1
+  enableOcclusionCulling: 1
+  enableDetailCulling: 1
+  enableLOD: 1
+  enableOnlyLOD02Shadows: 1
+  detailCullingPercentage: 0.005
+  debugShowUI: 0
+  debugDrawLOD: 0
+  debugDrawBoundsInSceneView: 0
+  debugDrawHiZ: 0
+  debugHiZLOD: 4
+  debugUIPrefab: {fileID: 0}
+  instancesInputData: []
+  indirectMeshes: []
+  logInstanceDrawMatrices: 0
+  logArgumentsAfterReset: 0
+  logSortingData: 0
+  logInstancesIsVisibleBuffer: 0
+  logScannedPreicates: 0
+  logGroupSumArrayBuffer: 0
+  logScannedGroupSumsBuffer: 0
+  logArgsBufferAfterCopy: 0
+  logCulledInstancesDrawMatrices: 0
+  createDrawDataBufferCS: {fileID: 0}
