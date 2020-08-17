@@ -1,0 +1,81 @@
+﻿//--------------------------------------------------------------------------------------
+// Includes
+//--------------------------------------------------------------------------------------
+
+#include "ShaderInclude_IndirectStructs.cginc"
+#include "UnityCG.cginc"
+#include "UnityDeferredLibrary.cginc"
+
+//--------------------------------------------------------------------------------------
+// Pragmas
+//--------------------------------------------------------------------------------------
+
+#pragma kernel CSMain
+
+//--------------------------------------------------------------------------------------
+// Constants
+//--------------------------------------------------------------------------------------
+#define THREAD_GROUP_SIZE_X 64
+#define THREAD_GROUP_SIZE_Y 1
+#define THREAD_GROUP_SIZE_Z 1
+
+#define LOD00_RANGE 500
+#define LOD01_RANGE 2000
+
+//--------------------------------------------------------------------------------------
+// Constant Buffers
+//--------------------------------------------------------------------------------------
+
+cbuffer CB
+{
+	uint _ShouldFrustumCull;
+	uint _ShouldOcclusionCull;
+	uint _ShouldDetailCull;
+	uint _ShouldLOD;
+	uint _ShouldOnlyUseLOD02Shadows;
+
+	int _ShadowCascades;
+	float _ShadowDistance;
+	float _DetailCullingScreenPercentage;
+	float2 _HiZTextureSize;
+	float3 _CamPosition;
+
+	float4x4 _UNITY_MATRIX_MVP;
+	Texture2D<float4> _HiZMap;
+	SamplerState sampler_HiZMap; // "sampler" + “_HiZMap”
+};
+
+//--------------------------------------------------------------------------------------
+// Structured Buffers
+//--------------------------------------------------------------------------------------
+
+StructuredBuffer<InstanceData> _InstanceDataBuffer;
+RWStructuredBuffer<uint> _ArgsBuffer;
+RWStructuredBuffer<uint> _IsVisibleBuffer;
+RWStructuredBuffer<uint> _ShadowArgsBuffer;
+RWStructuredBuffer<uint> _ShadowIsVisibleBuffer;
+RWStructuredBuffer<SortingData> _SortingData;
+
+//--------------------------------------------------------------------------------------
+// Kernels & Functions
+//--------------------------------------------------------------------------------------
+inline uint IsCameraOutsideObjBounds(float3 pos,float3 minPos,float3 maxPos)
+{
+	float boundsSize = distance(maxPos,minPos);
+	return ((distance(pos,maxPos)> boundsSize)+(distance(pos,minPos)> boundsSize));
+}
+
+inline uint IsVisibleAfterDetailCulling(float clipMinX,float clipMaxX,float clipMinY,float clipMaxY)
+{
+	return saturate((distance(clipMinX, clipMaxX)>= _DetailCullingScreenPercentage)+(distance(clipMinY, clipMaxY)>= _DetailCullingScreenPercentage));
+}
+
+inline uint IsVisibleAfterFrustumCulling(float4 clipPos)
+{
+	return (clipPos.z > clipPos.w
+		|| clipPos.x < -clipPos.w
+		|| clipPos.x > clipPos.w
+		|| clipPos.y < -clipPos.w
+		|| clipPos.y > clipPos.w)
+		? 0 : 1;
+}
