@@ -214,7 +214,7 @@ public class IndirectRenderer : MonoBehaviour
 
     private static readonly int _Positions = Shader.PropertyToID("_Position");
     private static readonly int _Scales = Shader.PropertyToID("_Scales");
-    private static readonly int _Rotations = Shader.PropertyToID("_Rotation");
+    private static readonly int _Rotations = Shader.PropertyToID("_Rotations");
 
     private static readonly int _ArgsBuffer = Shader.PropertyToID("_ArgsBuffer");
     private static readonly int _ShadowArgsBuffer = Shader.PropertyToID("_ShadowArgsBuffer");
@@ -391,7 +391,7 @@ public class IndirectRenderer : MonoBehaviour
     {
         if (!m_isInitialized)
         {
-            InitializeRenderer(ref _instances);
+            m_isInitialized= InitializeRenderer(ref _instances);
         }
     }
 
@@ -676,7 +676,7 @@ public class IndirectRenderer : MonoBehaviour
         uint MATRIX_HEIGHT = NUM_ELEMENTS / BITONIC_BLOCK_SIZE;
 
         m_sortingCommandBuffer = new CommandBuffer { name = "AsyncGPUSorting" };
-
+        m_sortingCommandBuffer.SetExecutionFlags(CommandBufferExecutionFlags.AsyncCompute);
         // Sort the data
         // First sort the rows for the levels <= to the block size
         for (uint level = 2; level < BITONIC_BLOCK_SIZE; level <<= 1)
@@ -930,7 +930,7 @@ public class IndirectRenderer : MonoBehaviour
         Profiler.BeginSample("LOD Sorting");
         {
             m_lastCamPosition = m_camPosition;
-            Graphics.ExecuteCommandBufferAsync(m_sortingCommandBuffer, ComputeQueueType.Background);
+           Graphics.ExecuteCommandBufferAsync(m_sortingCommandBuffer, ComputeQueueType.Background);
         }
         Profiler.EndSample();
 

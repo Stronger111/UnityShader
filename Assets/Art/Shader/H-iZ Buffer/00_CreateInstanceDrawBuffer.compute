@@ -38,7 +38,7 @@ RWStructuredBuffer<Indirect2x2Matrix> _InstancesDrawMatrixRows45;
 float4x4 rotationMatrix(float3 axis,float angle)
 {
 	axis = normalize(axis);
-	float s = sin(axis);
+	float s = sin(angle);
 	float c = cos(angle);
 	float oc = 1.0 - c;
 

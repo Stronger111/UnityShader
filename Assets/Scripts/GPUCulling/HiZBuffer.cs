@@ -118,8 +118,8 @@ public class HiZBuffer : MonoBehaviour
 
         if (m_LODCount == 0)
             return;
-        else
-            Debug.Log(string.Format("LOD Count-----{0}", m_LODCount));
+       // else
+            //Debug.Log(string.Format("LOD Count-----{0}", m_LODCount));
 
         bool isCommandBufferInvalid = false;
         if (m_HiZDepthTexture == null || (m_HiZDepthTexture.width != size || m_HiZDepthTexture.height != size) || m_lastCameraEvent != m_CameraEvent)
