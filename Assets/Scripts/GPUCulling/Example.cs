@@ -6,14 +6,17 @@ using UnityEngine.Rendering;
 
 public class Example : MonoBehaviour
 {
+    #region Variables
+
+    // Public
     public bool indirectRenderingEnabled = true;
     public bool createInstancesOnAwake = false;
     public bool shouldInstantiatePrefabs = false;
-
     public float areaSize = 5000f;
     public NumberOfInstances numberOfInstances;
     public IndirectRenderer indirectRenderer;
     public IndirectInstanceData[] instances;
+
     // Enums
     public enum NumberOfInstances
     {
@@ -30,15 +33,18 @@ public class Example : MonoBehaviour
     private bool lastIndirectRenderingEnabled = false;
     private bool lastIndirectDrawShadows = false;
     private GameObject normalInstancesParent;
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    #region MonoBehaviour
+
+    private void Start()
     {
         if (!AssertInstanceData())
         {
             enabled = false;
             return;
         }
+
         if (createInstancesOnAwake)
         {
             CreateInstanceData();
@@ -46,6 +52,7 @@ public class Example : MonoBehaviour
 
         lastIndirectRenderingEnabled = indirectRenderingEnabled;
         lastIndirectDrawShadows = indirectRenderer.drawInstanceShadows;
+
         if (shouldInstantiatePrefabs)
         {
             InstantiateInstance();
@@ -53,12 +60,6 @@ public class Example : MonoBehaviour
 
         indirectRenderer.Initialize(ref instances);
         indirectRenderer.StartDrawing();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private bool AssertInstanceData()
@@ -104,10 +105,57 @@ public class Example : MonoBehaviour
 
         return true;
     }
+
+    private void Update()
+    {
+        if (lastIndirectRenderingEnabled != indirectRenderingEnabled)
+        {
+            lastIndirectRenderingEnabled = indirectRenderingEnabled;
+
+            if (normalInstancesParent != null)
+            {
+                normalInstancesParent.SetActive(!indirectRenderingEnabled);
+            }
+
+            if (indirectRenderingEnabled)
+            {
+                indirectRenderer.Initialize(ref instances);
+                indirectRenderer.StartDrawing();
+            }
+            else
+            {
+                indirectRenderer.StopDrawing(true);
+            }
+        }
+
+        if (lastIndirectDrawShadows != indirectRenderer.drawInstanceShadows)
+        {
+            lastIndirectDrawShadows = indirectRenderer.drawInstanceShadows;
+
+            if (normalInstancesParent != null)
+            {
+                SetShadowCastingMode(lastIndirectDrawShadows ? ShadowCastingMode.On : ShadowCastingMode.Off);
+            }
+        }
+    }
+
+    #endregion
+
+    #region Private Functions
+
+    private void SetShadowCastingMode(ShadowCastingMode newMode)
+    {
+        Renderer[] rends = normalInstancesParent.GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < rends.Length; i++)
+        {
+            rends[i].shadowCastingMode = newMode;
+        }
+    }
+
     [ContextMenu("CreateInstanceData()")]
     private void CreateInstanceData()
     {
-        if(instances.Length==0)
+        if (instances.Length == 0)
         {
             Debug.LogError("Instances list is empty!", this);
             return;
@@ -115,36 +163,37 @@ public class Example : MonoBehaviour
 
         int numOfInstancesPerType = ((int)numberOfInstances) / instances.Length;
         int instanceCounter = 0;
-        for(int InstanceIndex=0;InstanceIndex< instances.Length;InstanceIndex++)
+        for (int i = 0; i < instances.Length; i++)
         {
-            //一种类型产生 numOfInstancesPerType个物体
-            instances[InstanceIndex].positions = new Vector3[numOfInstancesPerType];
-            instances[InstanceIndex].rotations = new Vector3[numOfInstancesPerType];
-            instances[InstanceIndex].scales = new Vector3[numOfInstancesPerType];
+            instances[i].positions = new Vector3[numOfInstancesPerType];
+            instances[i].rotations = new Vector3[numOfInstancesPerType];
+            instances[i].scales = new Vector3[numOfInstancesPerType];
 
-            Vector2 L = Vector2.one * InstanceIndex;
-            for(int InstanceOneTypeIndex=0; InstanceOneTypeIndex< numOfInstancesPerType; InstanceOneTypeIndex++)
+            Vector2 L = Vector2.one * i;
+            for (int k = 0; k < numOfInstancesPerType; k++)
             {
                 Vector3 rotation = Vector3.zero;
-                Vector3 scale = Vector3.one * Random.Range(instances[InstanceIndex].scaleRange.x, instances[InstanceIndex].scaleRange.y);
-                Vector3 pos = Nth_weyl(L, instanceCounter++)*areaSize;
+                Vector3 scale = Vector3.one * Random.Range(instances[i].scaleRange.x, instances[i].scaleRange.y);
+                Vector3 pos = Nth_weyl(L, instanceCounter++) * areaSize;
+                pos = new Vector3(pos.x - areaSize * 0.5f, 0f, pos.y - areaSize * 0.5f) + instances[i].positionOffset;
 
-                pos = new Vector3(pos.x - areaSize * 0.5f, 0f, pos.y - areaSize * 0.5f) + instances[InstanceIndex].positionOffset;
-                instances[InstanceIndex].positions[InstanceOneTypeIndex] = pos;
-                instances[InstanceIndex].rotations[InstanceOneTypeIndex] = rotation;
-                instances[InstanceIndex].scales[InstanceOneTypeIndex] = scale;
+                instances[i].positions[k] = pos;
+                instances[i].rotations[k] = rotation;
+                instances[i].scales[k] = scale;
             }
         }
     }
+
     private void InstantiateInstance()
     {
         Profiler.BeginSample("InstantiateInstance");
         normalInstancesParent = new GameObject("InstancesParent");
 
         Profiler.BeginSample("for instance.Count...");
-        for(int Index=0;Index<instances.Length;Index++)
+        for (int i = 0; i < instances.Length; i++)
         {
-            IndirectInstanceData instance = instances[Index];
+            IndirectInstanceData instance = instances[i];
+
             GameObject parentObj = new GameObject(instance.prefab.name);
             parentObj.transform.parent = normalInstancesParent.transform;
 
@@ -158,6 +207,7 @@ public class Example : MonoBehaviour
                 obj.transform.parent = parentObj.transform;
             }
             Profiler.EndSample();
+
             Profiler.BeginSample("for parentObj.Renderers.Length...");
             Renderer[] renderers = parentObj.GetComponentsInChildren<Renderer>();
             for (int r = 0; r < renderers.Length; r++)
@@ -167,9 +217,12 @@ public class Example : MonoBehaviour
             Profiler.EndSample();
         }
         Profiler.EndSample();
+
+
         normalInstancesParent.SetActive(!indirectRenderingEnabled);
         Profiler.EndSample();
     }
+
     // Taken from:
     // http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
     // https://www.shadertoy.com/view/4dtBWH
@@ -180,4 +233,6 @@ public class Example : MonoBehaviour
         res.y %= 1;
         return res;
     }
+
+    #endregion
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class IndirectInstanceData 
+public class IndirectInstanceData
 {
     public GameObject prefab;
     public Material indirectMaterial;

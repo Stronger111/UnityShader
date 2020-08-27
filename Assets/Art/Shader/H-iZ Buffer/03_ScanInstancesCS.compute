@@ -13,6 +13,7 @@
 //--------------------------------------------------------------------------------------
 // Constants
 //--------------------------------------------------------------------------------------
+
 #define THREAD_GROUP_SIZE_X 64
 #define THREAD_GROUP_SIZE_Y 1
 #define THREAD_GROUP_SIZE_Z 1
@@ -23,8 +24,12 @@
 
 cbuffer CB
 {
-	groupshared uint temp[2* THREAD_GROUP_SIZE_X]; //128
-};
+	groupshared uint temp[2 * THREAD_GROUP_SIZE_X];
+}
+
+//--------------------------------------------------------------------------------------
+// Structured Buffers
+//--------------------------------------------------------------------------------------
 
 StructuredBuffer<uint> _InstancePredicatesIn;
 RWStructuredBuffer<uint> _GroupSumArray;
@@ -33,7 +38,8 @@ RWStructuredBuffer<uint> _ScannedInstancePredicates;
 //--------------------------------------------------------------------------------------
 // Kernels & Functions
 //--------------------------------------------------------------------------------------
-// Based on Parallel Prefix Sum(Scan) with CUDA by Mark Harris
+
+// Based on Parallel Prefix Sum (Scan) with CUDA by Mark Harris
 [numthreads(THREAD_GROUP_SIZE_X, THREAD_GROUP_SIZE_Y, THREAD_GROUP_SIZE_Z)]
 inline void CSMain(
 	in uint3 _dispatchThreadID : SV_DispatchThreadID, // DispatchThreadID  = dot(GroupID, numthreads) + GroupThreadId;
@@ -47,19 +53,19 @@ inline void CSMain(
 	int groupID = (int)_groupID.x;
 
 	int offset = 1;
-	temp[2 * groupTID] = _InstancePredicatesIn[2* tID];// load input into shared memory
-	temp[2 * groupTID + 1] = _InstancePredicatesIn[2* tID+1];
+	temp[2 * groupTID] = _InstancePredicatesIn[2 * tID]; // load input into shared memory
+	temp[2 * groupTID + 1] = _InstancePredicatesIn[2 * tID + 1];
 	int d;
 	const int NoofElements = 2 * THREAD_GROUP_SIZE_X;
 
 	//perform reduction
-	for (d= NoofElements>>1;d>0;d>>=1)
+	for (d = NoofElements >> 1; d > 0; d >>= 1)
 	{
 		GroupMemoryBarrierWithGroupSync();
 
-		if (groupTID<d)
+		if (groupTID < d)
 		{
-			int ai = offset * (2* groupTID+1)-1;
+			int ai = offset * (2 * groupTID + 1) - 1;
 			int bi = offset * (2 * groupTID + 2) - 1;
 			temp[bi] += temp[ai];
 		}
@@ -67,19 +73,20 @@ inline void CSMain(
 	}
 
 	// clear the last element
-	if (groupTID==0)
+	if (groupTID == 0)
 	{
-		_GroupSumArray[_groupID.x] = temp[NoofElements-1];
+		_GroupSumArray[_groupID.x] = temp[NoofElements - 1];
 		temp[NoofElements - 1] = 0;
 	}
 
 	//perform downsweep and build scan
-	for (d=1;d< NoofElements;d*=2)
+	for (d = 1; d < NoofElements; d *= 2)
 	{
 		offset >>= 1;
+
 		GroupMemoryBarrierWithGroupSync();
 
-		if (groupTID<d)
+		if (groupTID < d)
 		{
 			int ai = offset * (2 * groupTID + 1) - 1;
 			int bi = offset * (2 * groupTID + 2) - 1;
@@ -88,8 +95,9 @@ inline void CSMain(
 			temp[bi] += t;
 		}
 	}
+
 	GroupMemoryBarrierWithGroupSync();
 
-	_ScannedInstancePredicates[2 * tID] = temp[2* groupTID]; // store to main memory
-	_ScannedInstancePredicates[2 * tID + 1] = temp[2* groupTID+1];
+	_ScannedInstancePredicates[2 * tID] = temp[2 * groupTID]; // store to main memory
+	_ScannedInstancePredicates[2 * tID + 1] = temp[2 * groupTID + 1];
 }

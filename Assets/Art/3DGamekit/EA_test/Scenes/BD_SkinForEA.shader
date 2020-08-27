@@ -41,16 +41,37 @@ Shader "GEffect/BD_Skin_EA"
 			#pragma fragment frag
 			#pragma multi_compile_fwdbase
 			// make fog work
-			#pragma multi_compile_fog
+			//#pragma multi_compile_fog
 
 			#include "UnityCG.cginc"
 			#include "Lighting.cginc"
 			#include "AutoLight.cginc"
-			#include "BD_CommonVert.cginc"	
 
 			float _SelfSpecWeight;
 			float4 _SelfSpecColor;
 			float _SSSWeight;
+
+			sampler2D _MainTex;
+			sampler2D _MaterialTex;
+			sampler2D _NormalTex;
+			sampler2D _DetailNormalTex;
+			float _DetailNormalTile;
+			float _DetailNormalWeight;
+			sampler2D _AO;
+			float4 _Color;
+			float3 _SkyColor;
+			float3 _AmbientColor;
+			float3 _StaticLightDir;
+			float _SkinSpec;
+			float3 _StaticLightColor;
+			struct v2f
+			{
+				float2 uv :TEXCOORD0;
+				float4 world_tangent :TEXCOORD1;
+				float4 world_binormal:TEXCOORD2;
+				float4 world_normal:TEXCOORD3;
+				float3 worldPos :SV_POSITION;
+			};
 
 			fixed4 frag(v2f i) : SV_Target
 			{
@@ -83,7 +104,8 @@ Shader "GEffect/BD_Skin_EA"
 
 				// Main Light
 				float halfLambert = NdotL * 0.5 + 0.5;
-				float _light = _calcOrenNayar3_optimize(halfLambert * 0.35, NdotV, NdotL) * 6.0;
+				//float _light = _calcOrenNayar3_optimize(halfLambert * 0.35, NdotV, NdotL) * 6.0;
+				float _light = 0;
 				float atten = LIGHT_ATTENUATION(i);
 				OutColor.xyz = _LightColor0.xyz * _light * atten;
 				
@@ -112,23 +134,27 @@ Shader "GEffect/BD_Skin_EA"
 				// main spec	
 				smooth *= 1.0 + _SkinSpec;
 				wNormal0 = normalize(wNormal0);
-				float fresnel = _fresnel_Optimize(0.2, NdotV);
+			/*	float fresnel = _fresnel_Optimize(0.2, NdotV);*/
+				float fresnel = 1;
 				float matal = min(smooth, 1);
-				float Spec = _calc_Specular2_custom_optimize2(wNormal0.xyz, viewDir.xyz, lightDir.xyz, NdotV, fresnel, matal);//_paParam_109
-				float3 EnvColor = _EnvBRDFApprox(0.02, pow(1.0 - smooth, 1), 1.0 - max(NdotV, 0.0));
+				float Spec = 1;
+				//float Spec = _calc_Specular2_custom_optimize2(wNormal0.xyz, viewDir.xyz, lightDir.xyz, NdotV, fresnel, matal);//_paParam_109
+				//float3 EnvColor = _EnvBRDFApprox(0.02, pow(1.0 - smooth, 1), 1.0 - max(NdotV, 0.0));
+				float3 EnvColor = float3(1,1,1);
 				EnvColor *= 0.2;
 				OutColor.xyz += Spec * 20.0 * ShadowResult.x * AoTex.x * _LightColor0.xyz * EnvColor;
 
 
 				// secondary spec
-				float Spec2 = _calc_Specular2_custom_optimize2_Self(wNormal.xyz, viewDir, NdotV, fresnel, matal) * 100;
+				float Spec2 = 1;
+				//float Spec2 = _calc_Specular2_custom_optimize2_Self(wNormal.xyz, viewDir, NdotV, fresnel, matal) * 100;
 				OutColor.xyz += _SkinSpec * Spec2 *(_SkyColor.xyz + _StaticLightColor.xyz * SceneHalfLambert) * _SelfSpecWeight * _SelfSpecColor.rgb;
 				
-				OutColor.xyz = ToneMapping(OutColor.xyz, _HDR_Multiply);
+				//OutColor.xyz = ToneMapping(OutColor.xyz, _HDR_Multiply);
 				//need gamma correction before into the framebuffer when linear space on
 				OutColor.xyz = pow(OutColor.xyz, 2.2);
 
-				UNITY_APPLY_FOG(i.fogCoord, OutColor);
+				//UNITY_APPLY_FOG(i.fogCoord, OutColor);
 				return OutColor;
 			}
 			ENDCG

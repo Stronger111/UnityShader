@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------
 
 #include "ShaderInclude_IndirectStructs.cginc"
+
 //--------------------------------------------------------------------------------------
 // Pragmas
 //--------------------------------------------------------------------------------------
@@ -24,7 +25,7 @@
 cbuffer CB
 {
 	uint _NumOfDrawcalls;
-};
+}
 
 //--------------------------------------------------------------------------------------
 // Structured Buffers
@@ -46,6 +47,7 @@ RWStructuredBuffer<Indirect2x2Matrix> _InstancesCulledMatrixRows45;
 //--------------------------------------------------------------------------------------
 // Kernels & Functions
 //--------------------------------------------------------------------------------------
+
 // Based on Parallel Prefix Sum (Scan) with CUDA by Mark Harris
 [numthreads(THREAD_GROUP_SIZE_X, THREAD_GROUP_SIZE_Y, THREAD_GROUP_SIZE_Z)]
 inline void CSMain(
@@ -58,8 +60,9 @@ inline void CSMain(
 	uint tID = _dispatchThreadID.x;
 	uint groupID = _groupID.x;
 	uint groupSum = _groupID.x > 0 ? _GroupSumArray[_groupID.x] : 0;
+
 	//scatter results
-	if (_InstancePredicatesIn[tID]==1)
+	if (_InstancePredicatesIn[tID] == 1)
 	{
 		uint instanceDataOutIndex = _ScannedInstancePredicates[tID] + groupSum;
 		uint drawInstanceIndex = _SortingData[tID].drawCallInstanceIndex & 0xFFFF;
@@ -69,12 +72,16 @@ inline void CSMain(
 		_InstancesCulledMatrixRows45[instanceDataOutIndex] = _InstancesDrawMatrixRows45[drawInstanceIndex];
 	}
 
+
+
 	if ((tID == 0) * (groupID == 0))
 	{
 		//patch up the visible instance counts per prop type
-		for (uint k=1;k< _NumOfDrawcalls;k++)
+		for (uint k = 1; k < _NumOfDrawcalls; k++)
 		{
-			_DrawcallDataOut[k * 5 + 4] = _DrawcallDataOut[(k-1)*5+4]+ _DrawcallDataOut[(k-1)*5+1];
+			_DrawcallDataOut[k * 5 + 4] = _DrawcallDataOut[(k - 1) * 5 + 4] +    //previous prop type offset 
+				_DrawcallDataOut[(k - 1) * 5 + 1];    //previous prop type number of instances
 		}
 	}
+
 }

@@ -59,10 +59,10 @@
 			{
 				float3 color = _Color;
 #if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
-#if defined(INDIRECT_DEBUG_LOD)
+    #if defined(INDIRECT_DEBUG_LOD)
 				uint off = _ArgsOffset % 15;
-				color = (off == 14 ? )float3(0.4, 0.7, 1.0) : ((off == 9) ? float3(0.0, 1.0, 0.0) : float3(1.0, 0.0, 0.0));
-#endif
+				color = (off == 14)? float3(0.4, 0.7, 1.0) : ((off == 9) ? float3(0.0, 1.0, 0.0) : float3(1.0, 0.0, 0.0));
+    #endif
 #endif
 				o.Albedo = tex2D(_MainTex, IN.uv_MainTex) * color;
 				o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_MainTex));
