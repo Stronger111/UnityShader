@@ -1080,6 +1080,63 @@ namespace UnityEngine.Rendering
             return animateMaterials;
         }
 
+        public static RenderTexture CreateRT(int width,int height,int depth,RenderTextureFormat format= RenderTextureFormat.ARGB32,int 
+               msaaCount=1,RenderTextureReadWrite rw= RenderTextureReadWrite.Linear,bool enableRandomWrite=false,RenderTextureMemoryless
+            memoryless=RenderTextureMemoryless.None,bool mipmap=false)
+        {
+            RenderTexture rt = new RenderTexture(width, height, depth, format, rw)
+            {
+                volumeDepth=1,
+                filterMode=FilterMode.Bilinear, 
+                wrapMode=TextureWrapMode.Clamp,
+                dimension=TextureDimension.Tex2D,
+                enableRandomWrite=enableRandomWrite,
+                useMipMap=mipmap,
+                autoGenerateMips=false,
+                mipMapBias=0.0f,
+                antiAliasing=msaaCount,
+                bindTextureMS=false,
+                useDynamicScale=false,
+                vrUsage=VRTextureUsage.None,
+                memorylessMode=memoryless
+            };
+            rt.Create();
+            return rt;
+        }
+
+        public static void ReleaseRT(RenderTexture RT)
+        {
+            if(RT!=null)
+            {
+                RT.Release();
+                if (!Application.isPlaying)
+                {
+                    UnityObject.DestroyImmediate(RT);
+                }
+                else
+                    UnityObject.Destroy(RT);
+            }
+        }
+        public static RenderTextureFormat CheckHDRFormat(RenderTextureFormat hdrFormat)
+        {
+            if(!SystemInfo.SupportsRenderTextureFormat(hdrFormat))
+            {
+                hdrFormat = RenderTextureFormat.ARGBHalf; // 16bit
+                if(!SystemInfo.SupportsRenderTextureFormat(hdrFormat))
+                {
+                    hdrFormat = RenderTextureFormat.ARGB2101010;//alpha占用 2 bit 10 bit
+                    if(!SystemInfo.SupportsRenderTextureFormat(hdrFormat))
+                    {
+                        hdrFormat = RenderTextureFormat.ARGBFloat; //每位 32bit
+                        if (!SystemInfo.SupportsRenderTextureFormat(hdrFormat))
+                        {
+                            hdrFormat = RenderTextureFormat.ARGB32; //每位 8 bit
+                        }
+                    }
+                }
+            }
+            return hdrFormat;
+        }
         /// <summary>
         /// Returns true if "Scene Lighting" is enabled for the view associated with the given camera.
         /// </summary>

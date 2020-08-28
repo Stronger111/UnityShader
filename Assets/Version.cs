@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Version : MonoBehaviour
+public class Version 
 {
     /****************    版本说明   记录 一下 ***************************/
     //1: 冯乐乐 Shader 代码
