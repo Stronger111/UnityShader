@@ -1,9 +1,9 @@
 #ifndef UNIVERSAL_LIT_INPUT_INCLUDED
 #define UNIVERSAL_LIT_INPUT_INCLUDED
 
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl"
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+#include "../ShaderLibrary/Core.hlsl"
+#include "../ShaderLibrary/CommonMaterial.hlsl"
+#include "../ShaderLibrary/SurfaceInput.hlsl"
 
 CBUFFER_START(UnityPerMaterial)
 float4 _BaseMap_ST;

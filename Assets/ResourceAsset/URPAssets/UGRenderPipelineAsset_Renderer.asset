@@ -22,6 +22,7 @@ MonoBehaviour:
       type: 3}
     samplingPS: {fileID: 4800000, guid: 179cf277cb90c7c4eaaceda90e81005f, type: 3}
     fallbackErrorPS: {fileID: 4800000, guid: 6cb1a4c94a11c274ab9b9389936c3135, type: 3}
+    HiZPS: {fileID: 4800000, guid: 6a8f4469ede2ce0469f85ec689f7a65c, type: 3}
   m_OpaqueLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

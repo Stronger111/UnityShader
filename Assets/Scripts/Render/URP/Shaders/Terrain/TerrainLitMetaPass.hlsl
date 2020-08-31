@@ -1,7 +1,7 @@
 #ifndef TERRAIN_LIT_META_PASS_INCLUDED
 #define TERRAIN_LIT_META_PASS_INCLUDED
 
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/MetaInput.hlsl"
+#include "../../ShaderLibrary/MetaInput.hlsl"
 
 struct Attributes
 {

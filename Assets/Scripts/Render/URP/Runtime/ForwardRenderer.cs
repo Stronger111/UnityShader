@@ -28,7 +28,8 @@ namespace UnityEngine.Rendering.Universal
         PostProcessPass m_FinalPostProcessPass;
         FinalBlitPass m_FinalBlitPass;
         CapturePass m_CapturePass;
-
+        //+add Dxs Hiz Pass
+        HZBPass m_HzbPass;
 #if POST_PROCESSING_STACK_2_0_0_OR_NEWER
         PostProcessPassCompat m_OpaquePostProcessPassCompat;
         PostProcessPassCompat m_PostProcessPassCompat;
@@ -54,13 +55,15 @@ namespace UnityEngine.Rendering.Universal
         Material m_CopyDepthMaterial;
         Material m_SamplingMaterial;
         Material m_ScreenspaceShadowsMaterial;
-
+        //+add 2020/8/31 Hiz
+        Material m_HiZMaterial;
         public ForwardRenderer(ForwardRendererData data) : base(data)
         {
             m_BlitMaterial = CoreUtils.CreateEngineMaterial(data.shaders.blitPS);
             m_CopyDepthMaterial = CoreUtils.CreateEngineMaterial(data.shaders.copyDepthPS);
             m_SamplingMaterial = CoreUtils.CreateEngineMaterial(data.shaders.samplingPS);
             m_ScreenspaceShadowsMaterial = CoreUtils.CreateEngineMaterial(data.shaders.screenSpaceShadowPS);
+            m_HiZMaterial = CoreUtils.CreateEngineMaterial(data.shaders.HiZPS);
 
             StencilStateData stencilData = data.defaultStencilState;
             m_DefaultStencilState = StencilState.defaultValue;
@@ -75,6 +78,8 @@ namespace UnityEngine.Rendering.Universal
             m_MainLightShadowCasterPass = new MainLightShadowCasterPass(RenderPassEvent.BeforeRenderingShadows);
             m_AdditionalLightsShadowCasterPass = new AdditionalLightsShadowCasterPass(RenderPassEvent.BeforeRenderingShadows);
             m_DepthPrepass = new DepthOnlyPass(RenderPassEvent.BeforeRenderingPrepasses, RenderQueueRange.opaque, data.opaqueLayerMask);
+            //+add dxs Hiz Buffer
+            m_HzbPass = new HZBPass(m_HiZMaterial);
             m_ScreenSpaceShadowResolvePass = new ScreenSpaceShadowResolvePass(RenderPassEvent.BeforeRenderingPrepasses, m_ScreenspaceShadowsMaterial);
             m_ColorGradingLutPass = new ColorGradingLutPass(RenderPassEvent.BeforeRenderingPrepasses, data.postProcessData);
             m_RenderOpaqueForwardPass = new DrawObjectsPass("Render Opaques", true, RenderPassEvent.BeforeRenderingOpaques, RenderQueueRange.opaque, data.opaqueLayerMask, m_DefaultStencilState, stencilData.stencilReference);
@@ -123,6 +128,8 @@ namespace UnityEngine.Rendering.Universal
             CoreUtils.Destroy(m_CopyDepthMaterial);
             CoreUtils.Destroy(m_SamplingMaterial);
             CoreUtils.Destroy(m_ScreenspaceShadowsMaterial);
+            //Ïú»ÙHiZ Material
+            CoreUtils.Destroy(m_HiZMaterial);
         }
 
         /// <inheritdoc />
@@ -283,7 +290,9 @@ namespace UnityEngine.Rendering.Universal
                 m_CopyDepthPass.Setup(m_ActiveCameraDepthAttachment, m_DepthTexture);
                 EnqueuePass(m_CopyDepthPass);
             }
-
+            //Test hiz
+            m_HzbPass.Setup(m_DepthTexture);
+            EnqueuePass(m_HzbPass) ;
             if (renderingData.cameraData.requiresOpaqueTexture)
             {
                 // TODO: Downsampling method should be store in the renderer instead of in the asset.

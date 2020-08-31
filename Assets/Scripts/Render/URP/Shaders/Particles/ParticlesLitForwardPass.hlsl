@@ -1,7 +1,7 @@
 #ifndef UNIVERSAL_PARTICLES_FORWARD_LIT_PASS_INCLUDED
 #define UNIVERSAL_PARTICLES_FORWARD_LIT_PASS_INCLUDED
 
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+#include "../../ShaderLibrary/Lighting.hlsl"
 
 struct AttributesParticle
 {

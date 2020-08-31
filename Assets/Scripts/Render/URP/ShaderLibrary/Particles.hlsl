@@ -1,9 +1,9 @@
 #ifndef UNIVERSAL_PARTICLES_INCLUDED
 #define UNIVERSAL_PARTICLES_INCLUDED
 
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+#include "../../ShaderLibrary/Core.hlsl"
+#include "../../ShaderLibrary/Color.hlsl"
+#include "../../ShaderLibrary/SurfaceInput.hlsl"
 
 TEXTURE2D_X(_CameraDepthTexture); SAMPLER(sampler_CameraDepthTexture);
 TEXTURE2D_X(_CameraOpaqueTexture); SAMPLER(sampler_CameraOpaqueTexture);

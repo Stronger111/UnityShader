@@ -48,6 +48,9 @@ namespace UnityEngine.Rendering.Universal
 
             [Reload("Shaders/Utils/FallbackError.shader")]
             public Shader fallbackErrorPS;
+            //+Add Hiz Pass Shader
+            [Reload("Shaders/Utils/UGHiZ.shader")]
+            public Shader HiZPS;
         }
 
         [Reload("Runtime/Data/PostProcessData.asset")]

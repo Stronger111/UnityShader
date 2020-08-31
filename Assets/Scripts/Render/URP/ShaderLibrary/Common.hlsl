@@ -169,9 +169,9 @@
 #elif defined(SHADER_API_SWITCH)
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/Switch.hlsl"
 #elif defined(SHADER_API_GLCORE)
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/GLCore.hlsl"
+#include "/API/GLCore.hlsl"
 #elif defined(SHADER_API_GLES3)
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/GLES3.hlsl"
+#include "/API/GLES3.hlsl"
 #elif defined(SHADER_API_GLES)
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/API/GLES2.hlsl"
 #else
