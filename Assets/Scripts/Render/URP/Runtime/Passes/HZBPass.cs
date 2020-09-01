@@ -117,7 +117,7 @@ namespace UnityEngine.Rendering.Universal.Internal
                         cmd.SetGlobalTexture("_Texture", m_TempRenderTextures[MipIndex - 1]);
                         cmd.Blit(m_TempRenderTextures[MipIndex - 1], m_TempRenderTextures[MipIndex], m_HizMaterial, (int)Pass.Reduce);
                     }
-                    //cmd.CopyTexture(m_TempRenderTextures[MipIndex],0,0,id,0, MipIndex + 1);//dst Mip Map
+                   //cmd.CopyTexture(m_TempRenderTextures[MipIndex],0,0,id,0, MipIndex + 1);//dst Mip Map
 
                     if (MipIndex >= 1)
                         cmd.ReleaseTemporaryRT(m_TempRenderTextures[MipIndex-1]);

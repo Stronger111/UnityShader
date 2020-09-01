@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c0ca13edcc84b341be542ba51f6396d, type: 3}
-  m_Name: UGRenderPipelineAsset_Renderer
+  m_Name: UGUniversalRenderPipelineAsset_Renderer
   m_EditorClassIdentifier: 
   m_RendererFeatures: []
   m_RendererFeatureMap: 
-  postProcessData: {fileID: 11400000, guid: e65ac95f2a2e9ce42a3281ee02281ca5, type: 2}
+  postProcessData: {fileID: 11400000, guid: 1fcdf96a8adc307498a155f87ebafaf0, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: a797fd2a18f33a442bbec129692b1483, type: 3}
     copyDepthPS: {fileID: 4800000, guid: 1a2710b60dfd78349b99959a73724098, type: 3}

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace UnityEngine.Rendering.Universal.Internal
 {
@@ -17,9 +18,11 @@ namespace UnityEngine.Rendering.Universal.Internal
 
         FilteringSettings m_FilteringSettings;
         const string m_ProfilerTag = "Depth Prepass";
-        ProfilingSampler m_ProfilingSampler = new ProfilingSampler(m_ProfilerTag);
+        ProfilingSampler m_ProfilingSampler;
         ShaderTagId m_ShaderTagId = new ShaderTagId("DepthOnly");
-
+        List<ShaderTagId> m_ShaderTagIdList = new List<ShaderTagId>();
+        Material TestMaterial;
+        RenderStateBlock m_RenderStateBlock;
         /// <summary>
         /// Create the DepthOnlyPass
         /// </summary>
@@ -27,6 +30,13 @@ namespace UnityEngine.Rendering.Universal.Internal
         {
             m_FilteringSettings = new FilteringSettings(renderQueueRange, layerMask);
             renderPassEvent = evt;
+            m_ProfilingSampler = new ProfilingSampler(m_ProfilerTag);
+            //test
+            m_RenderStateBlock = new RenderStateBlock(RenderStateMask.Nothing);
+            m_ShaderTagIdList.Add(new ShaderTagId("UniversalForward"));
+            m_ShaderTagIdList.Add(new ShaderTagId("LightweightForward"));
+            m_ShaderTagIdList.Add(new ShaderTagId("SRPDefaultUnlit"));
+
         }
 
         /// <summary>
@@ -34,7 +44,7 @@ namespace UnityEngine.Rendering.Universal.Internal
         /// </summary>
         public void Setup(
             RenderTextureDescriptor baseDescriptor,
-            RenderTargetHandle depthAttachmentHandle)
+            RenderTargetHandle depthAttachmentHandle,Material mat)
         {
             this.depthAttachmentHandle = depthAttachmentHandle;
             baseDescriptor.colorFormat = RenderTextureFormat.Depth;
@@ -43,6 +53,7 @@ namespace UnityEngine.Rendering.Universal.Internal
             // Depth-Only pass don't use MSAA
             baseDescriptor.msaaSamples = 1;
             descriptor = baseDescriptor;
+            this.TestMaterial = mat;
         }
 
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
@@ -73,6 +84,10 @@ namespace UnityEngine.Rendering.Universal.Internal
                 }
 
                 context.DrawRenderers(renderingData.cullResults, ref drawSettings, ref m_FilteringSettings);
+                
+                //cmd.DrawMesh(RenderingUtils.fullscreenMesh, Matrix4x4.identity, TestMaterial);
+                //context.ExecuteCommandBuffer(cmd);
+                //cmd.Clear();
 
             }
             context.ExecuteCommandBuffer(cmd);

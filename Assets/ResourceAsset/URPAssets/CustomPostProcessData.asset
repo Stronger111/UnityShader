@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c68e1e6f834096b42a68bc596b4ddb35, type: 3}
-  m_Name: UGCustomPostProcessData
+  m_Name: CustomPostProcessData
   m_EditorClassIdentifier: 
   shaders:
     stopNanPS: {fileID: 4800000, guid: f8ac475837eba884f8688ad8439df1da, type: 3}

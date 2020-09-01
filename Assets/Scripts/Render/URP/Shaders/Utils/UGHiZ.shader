@@ -56,7 +56,6 @@
 			 Tags{ "LightMode" = "HZB Occlusion Reduce" }
 			 CGPROGRAM
 			 #include "../../ShaderLibrary/API/GLES3.hlsl"
-			 //TEXTURE2D_SAMPLER2D(_Texture,sampler_Texture);
 			 Texture2D _Texture;
 			 SamplerState sampler_Texture;
 			 #pragma target 4.5

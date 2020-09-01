@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be141082a52fdbd45a3fa0d92fd2d5b4, type: 3}
-  m_Name: UGRenderPipelineAsset
+  m_Name: UGUniversalRenderPipelineAsset
   m_EditorClassIdentifier: 
   k_AssetVersion: 5
   k_AssetPreviousVersion: 5
   m_RendererType: 1
   m_RendererData: {fileID: 0}
   m_RendererDataList:
-  - {fileID: 11400000, guid: 74e18434fee63e948a964b7c66348664, type: 2}
+  - {fileID: 11400000, guid: 7a3073bdd8c68b1408b029c13c7c4569, type: 2}
   m_DefaultRendererIndex: 0
   m_RequireDepthTexture: 0
   m_RequireOpaqueTexture: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_UseSRPBatcher: 0
   m_SupportsDynamicBatching: 0
   m_MixedLightingSupported: 1
-  m_DebugLevel: 1
+  m_DebugLevel: 0
   m_PostProcessingFeatureSet: 0
   m_ColorGradingMode: 0
   m_ColorGradingLutSize: 32

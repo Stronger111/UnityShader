@@ -254,7 +254,7 @@ namespace UnityEngine.Rendering.Universal
 
             if (requiresDepthPrepass)
             {
-                m_DepthPrepass.Setup(cameraTargetDescriptor, m_DepthTexture);
+                m_DepthPrepass.Setup(cameraTargetDescriptor, m_DepthTexture, m_ScreenspaceShadowsMaterial);
                 EnqueuePass(m_DepthPrepass);
             }
 
