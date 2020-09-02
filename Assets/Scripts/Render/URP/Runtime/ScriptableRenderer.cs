@@ -122,8 +122,13 @@ namespace UnityEngine.Rendering.Universal
         const string k_SetCameraRenderStateTag = "Clear Render State";
         const string k_SetRenderTarget = "Set RenderTarget";
         const string k_ReleaseResourcesTag = "Release Resources";
-
+        /// <summary>
+        /// 颜色渲染目标
+        /// </summary>
         static RenderTargetIdentifier[] m_ActiveColorAttachments = new RenderTargetIdentifier[]{0, 0, 0, 0, 0, 0, 0, 0 };
+        /// <summary>
+        /// 深度渲染目标
+        /// </summary>
         static RenderTargetIdentifier m_ActiveDepthAttachment;
         static bool m_InsideStereoRenderBlock;
 

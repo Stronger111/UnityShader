@@ -36,7 +36,6 @@ namespace UnityEngine.Rendering.Universal.Internal
             m_ShaderTagIdList.Add(new ShaderTagId("UniversalForward"));
             m_ShaderTagIdList.Add(new ShaderTagId("LightweightForward"));
             m_ShaderTagIdList.Add(new ShaderTagId("SRPDefaultUnlit"));
-
         }
 
         /// <summary>
@@ -84,7 +83,9 @@ namespace UnityEngine.Rendering.Universal.Internal
                 }
 
                 context.DrawRenderers(renderingData.cullResults, ref drawSettings, ref m_FilteringSettings);
-                
+                //SetRenderTarget(cmd, depthAttachmentHandle.id,RenderBufferLoadAction.Load,RenderBufferStoreAction.Store,ClearFlag.All,Color.black,TextureDimension.Tex2D);
+                //context.ExecuteCommandBuffer(cmd);
+                //cmd.Clear();
                 //cmd.DrawMesh(RenderingUtils.fullscreenMesh, Matrix4x4.identity, TestMaterial);
                 //context.ExecuteCommandBuffer(cmd);
                 //cmd.Clear();
