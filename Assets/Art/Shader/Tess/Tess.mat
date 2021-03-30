@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tess
-  m_Shader: {fileID: 4800000, guid: 3ef62d01fe62ab645b5bee2a1dfec23b, type: 3}
+  m_Shader: {fileID: 4800000, guid: 61343621017c3bc40a9b9f9ef8e6516b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -79,7 +79,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Tess: 8.3
+    - _Tess: 24.3
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

@@ -88,7 +88,7 @@ Material:
     - _Speed: 1
     - _SrcBlend: 1
     - _Tiling: 3
-    - _UJump: 0.25
+    - _UJump: 0.113
     - _UVSec: 0
     - _VJump: 0.25
     - _ZWrite: 1

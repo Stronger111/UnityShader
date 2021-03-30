@@ -54,7 +54,7 @@ namespace UnityEngine.Rendering.Universal.Internal
             Vector2 HZBSize = new Vector2(1<< NumMipsX,1<< NumMipsY);
 
             hiZDepthRenderTexture = CoreUtils.CreateRT((int)HZBSize.x,(int)HZBSize.y,0,RenderTextureFormat.RGHalf,1,RenderTextureReadWrite.Linear);
-            hiZDepthRenderTexture.useMipMap = true;
+            //hiZDepthRenderTexture.useMipMap = true;
             hiZDepthRenderTexture.filterMode = FilterMode.Point;
             hiZDepthRenderTexture.name = "HZB Depth RT";
         }

@@ -1,47 +1,119 @@
 fileFormatVersion: 2
 guid: 34b5ec141028a8e4884849e763641ab1
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: CH_Elf_Priest_body
-    100002: CH_Elf_Priest_hair
-    100004: CH_Elf_Priest_hand
-    100006: CH_Elf_Priest_head
-    100008: CH_Elf_Priest_leg
-    100010: //RootNode
-    400000: CH_Elf_Priest_body
-    400002: CH_Elf_Priest_hair
-    400004: CH_Elf_Priest_hand
-    400006: CH_Elf_Priest_head
-    400008: CH_Elf_Priest_leg
-    400010: //RootNode
-    2100000: CH_Elf_Priest_leg
-    2100002: CH_Elf_Priest_hand
-    2100004: CH_Elf_Priest_hairswear
-    2100006: CH_Elf_Priest_hair
-    2100008: CH_Elf_Priest_body
-    2100010: CH_Elf_Priest_shoulder
-    2100012: CH_Elf_Priest_head
-    2300000: CH_Elf_Priest_body
-    2300002: CH_Elf_Priest_hair
-    2300004: CH_Elf_Priest_hand
-    2300006: CH_Elf_Priest_head
-    2300008: CH_Elf_Priest_leg
-    3300000: CH_Elf_Priest_body
-    3300002: CH_Elf_Priest_hair
-    3300004: CH_Elf_Priest_hand
-    3300006: CH_Elf_Priest_head
-    3300008: CH_Elf_Priest_leg
-    4300000: CH_Elf_Priest_leg
-    4300002: CH_Elf_Priest_hand
-    4300004: CH_Elf_Priest_hair
-    4300006: CH_Elf_Priest_body
-    4300008: CH_Elf_Priest_head
-    7400000: Take 001
-    9500000: //RootNode
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: CH_Elf_Priest_body
+  - first:
+      1: 100002
+    second: CH_Elf_Priest_hair
+  - first:
+      1: 100004
+    second: CH_Elf_Priest_hand
+  - first:
+      1: 100006
+    second: CH_Elf_Priest_head
+  - first:
+      1: 100008
+    second: CH_Elf_Priest_leg
+  - first:
+      1: 100010
+    second: //RootNode
+  - first:
+      4: 400000
+    second: CH_Elf_Priest_body
+  - first:
+      4: 400002
+    second: CH_Elf_Priest_hair
+  - first:
+      4: 400004
+    second: CH_Elf_Priest_hand
+  - first:
+      4: 400006
+    second: CH_Elf_Priest_head
+  - first:
+      4: 400008
+    second: CH_Elf_Priest_leg
+  - first:
+      4: 400010
+    second: //RootNode
+  - first:
+      21: 2100000
+    second: CH_Elf_Priest_leg
+  - first:
+      21: 2100002
+    second: CH_Elf_Priest_hand
+  - first:
+      21: 2100004
+    second: CH_Elf_Priest_hairswear
+  - first:
+      21: 2100006
+    second: CH_Elf_Priest_hair
+  - first:
+      21: 2100008
+    second: CH_Elf_Priest_body
+  - first:
+      21: 2100010
+    second: CH_Elf_Priest_shoulder
+  - first:
+      21: 2100012
+    second: CH_Elf_Priest_head
+  - first:
+      23: 2300000
+    second: CH_Elf_Priest_body
+  - first:
+      23: 2300002
+    second: CH_Elf_Priest_hair
+  - first:
+      23: 2300004
+    second: CH_Elf_Priest_hand
+  - first:
+      23: 2300006
+    second: CH_Elf_Priest_head
+  - first:
+      23: 2300008
+    second: CH_Elf_Priest_leg
+  - first:
+      33: 3300000
+    second: CH_Elf_Priest_body
+  - first:
+      33: 3300002
+    second: CH_Elf_Priest_hair
+  - first:
+      33: 3300004
+    second: CH_Elf_Priest_hand
+  - first:
+      33: 3300006
+    second: CH_Elf_Priest_head
+  - first:
+      33: 3300008
+    second: CH_Elf_Priest_leg
+  - first:
+      43: 4300000
+    second: CH_Elf_Priest_leg
+  - first:
+      43: 4300002
+    second: CH_Elf_Priest_hand
+  - first:
+      43: 4300004
+    second: CH_Elf_Priest_hair
+  - first:
+      43: 4300006
+    second: CH_Elf_Priest_body
+  - first:
+      43: 4300008
+    second: CH_Elf_Priest_head
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -73,34 +145,41 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -110,14 +189,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
