@@ -55,7 +55,7 @@
 			 Name "HZB Culling Reduce"
 			 Tags{ "LightMode" = "HZB Occlusion Reduce" }
 			 CGPROGRAM
-			 #include "../../ShaderLibrary/API/GLES3.hlsl"
+			 //#include "../../ShaderLibrary/API/GLES3.hlsl"
 			 Texture2D _Texture;
 			 SamplerState sampler_Texture;
 			 #pragma target 4.5
@@ -84,7 +84,8 @@
 
 			 float4 frag(v2f i) : SV_Target
 			 {
-				 float4 r = GATHER_RED_TEXTURE2D(_Texture,sampler_Texture,i.uv);
+				 //float4 r = GATHER_RED_TEXTURE2D(_Texture,sampler_Texture,i.uv);
+				 float4 r=float4(0,0,0,0);
 				 float minimum = min(min(min(r.x, r.y), r.z), r.w);
 				 return float4(minimum, minimum, minimum, minimum);
 			  }

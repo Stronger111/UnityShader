@@ -291,8 +291,8 @@ namespace UnityEngine.Rendering.Universal
                 EnqueuePass(m_CopyDepthPass);
             }
             //Test hiz
-            m_HzbPass.Setup(m_DepthTexture);
-            EnqueuePass(m_HzbPass) ;
+            //m_HzbPass.Setup(m_DepthTexture);
+            //EnqueuePass(m_HzbPass) ;
             if (renderingData.cameraData.requiresOpaqueTexture)
             {
                 // TODO: Downsampling method should be store in the renderer instead of in the asset.
